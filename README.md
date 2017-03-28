@@ -25,3 +25,40 @@ Run this command to run the test suite
 
 That's it! Now go build something cool.
 # REST-API-WITH-SLIM-AND-JWT-Token
+
+# Test method POST : http://localhost/slim/public/index.php/login
+# Body : username and password
+
+# Test method POST : http://localhost/slim/public/index.php/get
+# status 200 (ok);
+
+# setting database on :
+#dir/path : slim/src/config/db.php
+#here is code : <?php
+	class db {
+
+		private $dbhost = "localhost";
+		private $dbuser = "root";
+		private $password = "123456";
+		private $dbname = "customer";
+		
+
+
+		public function connect () {
+			$dsn = 'mysql:dbname=$this->dbname;host=$this->dbhost';
+			$user = '$this->user';
+			$password = '$this->password';
+
+		try {
+    	$dbh = new PDO($dsn, $user, $password);
+    	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+				} catch (PDOException $e) {
+    			echo 'Connection failed: ' . $e->getMessage();
+				}
+		$this->db = $dbh;
+		return $dbh;
+				}
+
+
+	}
+
